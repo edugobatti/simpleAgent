@@ -1,6 +1,6 @@
 import requests
 
-
+# função que consulta api para trazer resposta na consulta do cep
 def consulta_cep(cep):
     consulta_url = f"https://viacep.com.br/ws/{cep}/json/"
     response = requests.get(consulta_url)

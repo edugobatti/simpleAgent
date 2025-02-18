@@ -6,12 +6,12 @@ from langchain.agents import initialize_agent, AgentType
 from langchain.memory import ConversationBufferMemory
 
 
-#Agents
-from src.tools.cep_tool import consultaCEP
-from src.tools.operation_tool import ferramenta_generica
+# Importação das tools personalizadas
+from src.tools.cep_tool import tool_cep
+from src.tools.operation_tool import tool_calculo
 
 
-
+# Agent simples do langchain usando servidor local ollama
 class LangChainAgentOllama:
     def __init__(self):
         # Configuração do modelo Ollama
@@ -34,7 +34,7 @@ class LangChainAgentOllama:
         self.memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
         # Definição das ferramentas disponíveis
-        self.tools = [consultaCEP, ferramenta_generica]
+        self.tools = [tool_calculo, tool_cep]
 
         # Criação do agente usando Ollama
         self.agent_executor = initialize_agent(

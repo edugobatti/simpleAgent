@@ -9,18 +9,18 @@ from langchain.schema import SystemMessage
 from langchain.agents import OpenAIFunctionsAgent, AgentExecutor
 from langchain.memory import ConversationBufferMemory
 
-# Importação das ferramentas personalizadas
-from src.tools.cep_tool import consultaCEP
-from src.tools.operation_tool import ferramenta_generica
+# Importação das tools personalizadas
+from src.tools.cep_tool import tool_cep
+from src.tools.operation_tool import tool_calculo
 
-
+# Agent simples do langchain usando servidor local openai
 class LangChainAgentOpenai:
     def __init__(self):
         # Configuração do modelo OpenAI
         self.chat = ChatOpenAI(
-            model=os.environ["MODEL_OPENAI"],
+            model=os.environ["MODEL_OPENAI"], # precisa substituir no .env
             temperature=0,
-            openai_api_key=os.environ["OPENAI_API_KEY"]
+            openai_api_key=os.environ["OPENAI_API_KEY"] # precisa substituir no .env
         )
 
         # Definição do prompt
@@ -41,8 +41,8 @@ class LangChainAgentOpenai:
 
         # Definição das ferramentas disponíveis
         self.tools = [
-            consultaCEP,
-            ferramenta_generica
+            tool_calculo,
+            tool_cep
         ]
 
         # Criação do agente usando OpenAIFunctionsAgent

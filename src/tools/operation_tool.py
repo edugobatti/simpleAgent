@@ -9,8 +9,8 @@ class OperacaoArgsSchema(BaseModel):
     num1: float = Field(..., description="Primeiro número")
     num2: float = Field(..., description="Segundo número")
 
-# Criação da ferramenta estruturada
-ferramenta_generica = StructuredTool.from_function(
+# Tools de calculo basico de CEP 
+tool_calculo = StructuredTool.from_function(
     name="Ferramenta Genérica",
     description="Você é uma ferramenta responsável por realizar operações matemáticas básicas.",
     func=operacao_generica,

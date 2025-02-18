@@ -1,3 +1,4 @@
+# função que faz as operações de maneira generica
 def operacao_generica(operacao: str, num1: float, num2: float):
     try:
         if operacao == "soma":

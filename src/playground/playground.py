@@ -9,9 +9,13 @@ def chat_with_llm(prompt,llm_selectbox):
     response = requests.post(API_URL, json={"query": prompt, "llm_model":llm_selectbox})
     return response.json().get("content", "Erro na resposta da API")
 
+st.set_page_config(
+    page_title="SimpleAgent",
+    page_icon="🤖",
+    layout="wide"
+)
 
-
-st.title("Playground")
+st.title("Playground 🤖")
 
 # Initialize chat history
 if "messages" not in st.session_state:
